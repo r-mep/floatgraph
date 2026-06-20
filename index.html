@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>floatgraph</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <button id="lang-toggle" aria-label="Switch language"></button>
+
+  <svg id="graph"></svg>
+
+  <!-- Overlay (mobile tap-outside to close) -->
+  <div id="overlay"></div>
+
+  <!-- Detail panel -->
+  <div id="panel" role="dialog" aria-modal="true">
+    <div class="panel-header">
+      <div class="panel-icon" id="p-icon"></div>
+      <div class="panel-title" id="p-title"></div>
+      <button class="panel-close" id="panel-close" aria-label="閉じる">✕</button>
+    </div>
+    <div class="panel-body">
+      <p class="panel-description" id="p-desc"></p>
+      <div class="panel-photos" id="p-photos"></div>
+    </div>
+  </div>
+
+  <div id="hint">ノードをタップして詳細を見る</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script src="i18n.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
