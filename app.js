@@ -1,4 +1,42 @@
 (() => {
+  // ─── Theme state ─────────────────────────────────────────────
+  const osPrefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+  // stored value: "light" | "dark" | null (= follow OS)
+  let storedTheme = localStorage.getItem("floatgraph-theme");
+
+  function isCurrentlyDark() {
+    if (storedTheme === "dark") return true;
+    if (storedTheme === "light") return false;
+    return osPrefersDark.matches;
+  }
+
+  function applyTheme() {
+    const dark = isCurrentlyDark();
+    if (storedTheme) {
+      document.documentElement.dataset.theme = storedTheme;
+    } else {
+      delete document.documentElement.dataset.theme;
+    }
+    const btn = document.getElementById("theme-toggle");
+    btn.textContent = dark ? "☀" : "🌙";
+    btn.setAttribute(
+      "aria-label",
+      dark ? ui("themeToggleToLight") : ui("themeToggleToDark")
+    );
+  }
+
+  document.getElementById("theme-toggle").addEventListener("click", () => {
+    storedTheme = isCurrentlyDark() ? "light" : "dark";
+    localStorage.setItem("floatgraph-theme", storedTheme);
+    applyTheme();
+  });
+
+  // Sync when OS preference changes (no manual override)
+  osPrefersDark.addEventListener("change", () => {
+    if (!storedTheme) applyTheme();
+  });
+
   // ─── Language state ──────────────────────────────────────────
   const SUPPORTED_LANGS = ["ja", "en"];
   const DEFAULT_LANG = navigator.language.startsWith("ja") ? "ja" : "en";
@@ -163,5 +201,6 @@
   });
 
   // ─── Init ────────────────────────────────────────────────────
+  applyTheme();
   applyLang();
 })();

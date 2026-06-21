@@ -11,7 +11,11 @@ const GRAPH_DATA = {
         ja: "日々の中で出会うかわいいものを集めています。ときめきは大切に。",
         en: "A collection of cute things I encounter in everyday life.",
       },
-      photos: [],
+      photos: [
+        "https://picsum.photos/seed/kawaii1/400/400",
+        "https://picsum.photos/seed/kawaii2/400/400",
+        "https://picsum.photos/seed/kawaii3/400/400",
+      ],
     },
     {
       id: "food",
@@ -24,7 +28,10 @@ const GRAPH_DATA = {
         ja: "おいしいものを食べることが幸せの基本。いつか食べたいものも。",
         en: "Good food is the foundation of happiness. Also things I want to try someday.",
       },
-      photos: [],
+      photos: [
+        "https://picsum.photos/seed/food1/400/400",
+        "https://picsum.photos/seed/food2/400/400",
+      ],
     },
     {
       id: "spots",
