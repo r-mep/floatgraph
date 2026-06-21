@@ -69,8 +69,11 @@ const GRAPH_DATA = {
   links: [
     { source: "food", target: "spots" },
     { source: "food", target: "london" },
+    { source: "food", target: "weekend" },
     { source: "kawaii", target: "london" },
     { source: "kawaii", target: "weekend" },
+    { source: "kawaii", target: "spots" },
     { source: "weekend", target: "spots" },
+    { source: "london", target: "spots" },
   ],
 };
