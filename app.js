@@ -60,6 +60,7 @@
     document.documentElement.lang = currentLang;
     document.getElementById("hint").textContent = ui("hint");
     document.getElementById("panel-close").setAttribute("aria-label", ui("close"));
+    document.getElementById("lightbox-close").setAttribute("aria-label", ui("close"));
 
     const btn = document.getElementById("lang-toggle");
     btn.textContent = ui("langToggleText");
@@ -163,17 +164,14 @@
 
     const grid = document.getElementById("p-photos");
     grid.innerHTML = "";
-    (d.photos || []).forEach((src) => {
+    const photos = (d.photos || []).slice(0, 3);
+    photos.forEach((src) => {
       const img = document.createElement("img");
       img.src = src; img.alt = "";
+      img.addEventListener("click", () => openLightbox(src));
       grid.appendChild(img);
     });
-    const placeholders = Math.max(0, 3 - (d.photos || []).length);
-    for (let i = 0; i < placeholders; i++) {
-      const ph = document.createElement("div");
-      ph.className = "photo-placeholder";
-      grid.appendChild(ph);
-    }
+    grid.dataset.count = photos.length;
   }
 
   function openPanel(d) {
@@ -193,6 +191,25 @@
   document.getElementById("panel-close").addEventListener("click", closePanel);
   overlay.addEventListener("click", closePanel);
   svg.on("click", closePanel);
+
+  // ─── Lightbox ────────────────────────────────────────────────
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  function openLightbox(src) {
+    lightboxImg.src = src;
+    lightbox.classList.add("open");
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("open");
+    lightboxImg.src = "";
+  }
+
+  lightbox.addEventListener("click", closeLightbox);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lightbox.classList.contains("open")) closeLightbox();
+  });
 
   // ─── Resize ───────────────────────────────────────────────────
   window.addEventListener("resize", () => {

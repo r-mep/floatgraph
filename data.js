@@ -12,9 +12,9 @@ const GRAPH_DATA = {
         en: "A collection of cute things I encounter in everyday life.",
       },
       photos: [
-        "https://picsum.photos/seed/kawaii1/400/400",
-        "https://picsum.photos/seed/kawaii2/400/400",
-        "https://picsum.photos/seed/kawaii3/400/400",
+        "https://picsum.photos/seed/kawaii1/800/450",
+        "https://picsum.photos/seed/kawaii2/450/800",
+        "https://picsum.photos/seed/kawaii3/800/450",
       ],
     },
     {
@@ -29,8 +29,8 @@ const GRAPH_DATA = {
         en: "Good food is the foundation of happiness. Also things I want to try someday.",
       },
       photos: [
-        "https://picsum.photos/seed/food1/400/400",
-        "https://picsum.photos/seed/food2/400/400",
+        "https://picsum.photos/seed/food1/800/450",
+        "https://picsum.photos/seed/food2/450/800",
       ],
     },
     {
@@ -57,7 +57,9 @@ const GRAPH_DATA = {
         ja: "2025年秋からロンドン在住。日々の発見と驚き。",
         en: "Living in London since autumn 2025. Daily discoveries and surprises.",
       },
-      photos: [],
+      photos: [
+        "https://picsum.photos/seed/london1/800/450",
+      ],
     },
     {
       id: "weekend",
